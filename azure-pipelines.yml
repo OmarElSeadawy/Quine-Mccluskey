@@ -8,6 +8,14 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+  
+- task: DockerCompose@0
+  inputs:
+    containerregistrytype: 'Container Registry'
+    dockerComposeFile: '**/docker-compose.yml'
+    action: 'Run a Docker Compose command'
+    dockerComposeCommand: 'Docker-compose up'
+    arguments: '-d mongo'
 
 steps:
 - script: g++ QM.cpp
